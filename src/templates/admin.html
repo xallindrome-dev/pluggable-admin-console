@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Translation Admin Portal</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        padding: 10px;
+        border: 1px solid #ccc;
+        text-align: left;
+      }
+      button {
+        margin-top: 20px;
+        padding: 10px 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Translation Admin Portal</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Key</th>
+          <th>Translation</th>
+        </tr>
+      </thead>
+      <tbody id="translationTable"></tbody>
+    </table>
+    <button id="publishButton">Publish</button>
+
+    <script>
+      const translations = __TRANSLATIONS__;
+      const table = document.getElementById("translationTable");
+      Object.keys(translations).forEach((key) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+        <td>${key}</td>
+        <td><input type="text" value="${translations[key]}" data-key="${key}" /></td>
+      `;
+        table.appendChild(row);
+      });
+
+      document.getElementById("publishButton").addEventListener("click", () => {
+        const updatedTranslations = {};
+        document.querySelectorAll("input").forEach((input) => {
+          updatedTranslations[input.dataset.key] = input.value;
+        });
+        fetch("/publish", {
+          method: "POST",
+          body: JSON.stringify(updatedTranslations),
+          headers: { "Content-Type": "application/json" },
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "es6", // Output ECMAScript 6 features
+    "module": "commonjs", // Use CommonJS modules (required for Node.js)
+    "lib": ["es6", "dom"], // Support ECMAScript and browser (DOM) features
+    "rootDir": "src", // Your source files will be in 'src' folder
+    "outDir": "dist", // Output compiled files to 'dist' folder
+    "esModuleInterop": true, // Allows import of CommonJS modules with default import syntax
+    "strict": true, // Strict type-checking options
+    "resolveJsonModule": true, // Allows importing JSON files as modules
+    "moduleResolution": "node", // Resolve modules using Node.js' module resolution
+    "skipLibCheck": true // Skips type checking of declaration files
+  },
+  "include": ["src/**/*"], // Include all TypeScript files in the 'src' folder
+  "exclude": ["node_modules", "dist"] // Exclude node_modules and dist folders
+}
