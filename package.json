@@ -1,6 +1,6 @@
 {
   "name": "pluggable-admin-console",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A TypeScript/JavaScript library for managing translation files with a CLI and admin portal.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -30,6 +30,7 @@
   "author": "Andrew Wilson",
   "license": "MIT",
   "dependencies": {
+    "buffer": "^6.0.3",
     "express": "^4.21.0",
     "fs": "^0.0.1-security",
     "path": "^0.12.7",
