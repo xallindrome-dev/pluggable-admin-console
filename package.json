@@ -1,9 +1,10 @@
 {
   "name": "pluggable-admin-console",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A TypeScript/JavaScript library for managing translation files with a CLI and admin portal.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "type": "module",
   "scripts": {
     "build": "bun build src/index.ts --outdir dist && bun run build-types",
     "build-types": "bun tsc --declaration --emitDeclarationOnly",
@@ -13,7 +14,8 @@
     "dev": "bun src/cli/index.ts pac -t",
     "serve-dev": "bun src/utils/fileUtils.ts",
     "clean": "rm -rf dist",
-    "build-dev": "bun run clean && bun run build"
+    "build-dev": "bun run clean && bun run build",
+    "pub": "npm login && npm publish --access public"
   },
   "repository": {
     "type": "git",
